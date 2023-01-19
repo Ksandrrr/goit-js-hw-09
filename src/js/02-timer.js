@@ -15,24 +15,22 @@ const refs = {
 
 
 refs.button.disabled = true;
-let condition = false;
+// let condition = false;
 const options = {
   enableTime: true,
-    time_24hr: true,
-//    minDate: "today",
+  time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
         if (selectedDates[0] - new Date() < 0) {
-          // alert(`Please choose a date in the future`)
          Notiflix.Notify.failure(`Please choose a date in the future`);
         }
         if (selectedDates[0] - new Date() > 0) {
         refs.button.disabled = false;
         refs.button.addEventListener(`click`, () => {
-        if (!condition) { 
+        // if (!condition) { 
         refs.button.disabled = true;
-        condition = true;
+        // condition = true;
         let dateSubtraction = selectedDates[0] - new Date();
         let { days, hours, minutes, seconds } = convertMs(dateSubtraction);
         refs.days.textContent = days;
@@ -53,7 +51,7 @@ const options = {
               clearInterval(intevalTime)
           }
         }, 1000);
-      }
+      // }
     });  
   }
   },
